@@ -1,3 +1,5 @@
+Take care to non-exhaustive patterns at list2tree
+
 \begin{code}
 
 data Tree = Empty | Node Tree Int Tree
@@ -10,6 +12,8 @@ startfrom y [] = []
 startfrom y (x:xs) = if (x==y) then xs
                         else startfrom y xs
 
+list2tree [] [] = Empty 
+list2tree [e] [_] = Node Empty e Empty
 list2tree (p:ps) is =   if ll /= [] && lr /= [] then Node (list2tree ((upto (last ll) ps) ++ [(last ll)]) ll) p (list2tree (startfrom (last ll) ps) lr)
                         else
                         if ll == [] then (Node Empty p (list2tree ps lr))
